@@ -1,0 +1,40 @@
+<head>
+</head>
+<tbody>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<form method="post">
+    <label class="form-label">Amount</label>
+    <input class="form-control" id="amount" name="amount">
+    <br>
+    <label>Is Income</label>
+    <input type="checkbox" id="income" name="income">
+    <br>
+    <label>Description</label>
+    <input type="text" id="description" name="description">
+    <br>
+    <label class="form-label">Category</label>
+    {% for key, segment in categories.items() %}
+    {% for category_child in segment %}
+    <tr>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="category" id="flexRadioDefault1"
+                   value="{{key}}, {{category_child}}">
+            <label class="form-check-label" for="flexRadioDefault1">
+                {{key}} {{category_child}}
+            </label>
+        </div>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+    <input type="submit" value="Submit">
+</form>
+</tbody>
