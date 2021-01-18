@@ -6,7 +6,6 @@ import os
 
 # config
 current_sheet = str(datetime.date.today().year)
-# sheet_key = "1A-UI02Q3fRV-yQCywTT3taW--5b3ILFtAbgrMlkC0ts"
 sheet_key = os.environ.get('SHEET_KEY')
 gc = gspread.service_account(filename="auth.json")
 file = gc.open_by_key(sheet_key)
